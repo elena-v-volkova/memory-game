@@ -1,0 +1,164 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: rgb(155 157 163);
+}
+
+.field {
+  margin: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 270px;
+  width: 35%;
+  margin: 30px;
+}
+
+.input-group {
+  align-self: center;
+}
+
+.form-desc {
+  margin-bottom: 15px;
+  font-size: 19px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #fff;
+}
+
+.form-input,
+.btn {
+  height: 30px;
+  width: 50px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.btn {
+  width: 150px;
+}
+
+
+.memory-card {
+  height: 100px;
+  width: 100px;
+  margin: 5px;
+  position: relative;
+  perspective: 1000px;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+
+}
+
+
+.back-face,
+.front-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .5s;
+  background-color: #fff;
+}
+
+.memory-card.flip>.back-face {
+  z-index: 4;
+  -webkit-transform: rotateY(179deg);
+  transform: rotateY(179deg);
+}
+
+.front-face {
+
+  z-index: 2;
+  -webkit-transform: rotateY(-179deg);
+  transform: rotateY(-179deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.memory-card.flip>.front-face {
+  z-index: 3;
+  -webkit-transform: rotateX(0) rotateY(0);
+  transform: rotateX(0) rotateY(0);
+}
+
+.back-face {
+  -webkit-transform: rotateX(0) rotateY(0);
+  transform: rotateX(0) rotateY(0);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.line {
+  display: flex;
+}
+
+.newgamebtn {
+  display: block;
+  width: 200px;
+  height: 30px;
+  margin: 20px auto;
+}
+
+.overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(117, 119, 123, 0.729);
+  z-index: 1;
+  top: 0;
+  left: 0;
+  transition: height 0.5s;
+}
+
+.overlay.hidden {
+  width: 0;
+  height: 0;
+}
+
+.overlay.hidden>.overlaytext {
+  font-size: 0px;
+}
+
+.overlaytext {
+  font-size: 70px;
+  color: white;
+}
+
+@media screen and (max-width: 460px) {
+  .memory-card {
+    height: 70px;
+    width: 70px;
+  }
+}
